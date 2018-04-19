@@ -1,0 +1,24 @@
+[33mcommit 384a2b0cd6656b79136ab7d7b33ab06afd0cab6e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 3c159a0 7dd5f15
+Author: Bruno Bevilaqua <bbbevilaqua@gmail.com>
+Date:   Thu Apr 19 10:35:41 2018 -0300
+
+    Create(Controllers) | Update(User CRUD)
+
+[33mcommit 3c159a0436443b5fa139dc338003e76011588f1a[m
+Author: Bruno Bevilaqua <bbbevilaqua@gmail.com>
+Date:   Wed Apr 18 17:51:42 2018 -0300
+
+    add backup db-test
+
+[33mcommit 7dd5f150802a538058d9d7bc2cef434cf94ec908[m
+Author: Bruno Fernando Bevilaqua <bbbevilaqua@gmail.com>
+Date:   Wed Apr 18 17:46:40 2018 -0300
+
+    Update README.md
+
+[33mcommit 74333eeddc4e7cc989e29c6608b97d5d3e4d2723[m
+Author: Bruno Bevilaqua <bbbevilaqua@gmail.com>
+Date:   Wed Apr 18 17:44:10 2018 -0300
+
+    first commit

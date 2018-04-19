@@ -2,7 +2,7 @@
 /**
  * userRegister
  */
-class User
+class UserModel
 {
   public function userGetAll($pdo, $data)
   {

@@ -51,8 +51,7 @@ class UserController
     require('../slim-api/src/Models/Model.php');
     // validation
     if(!isset($this->data['name'])){
-      echo json_encode($response = array('success' => 'false','description'=>'Name is null !','response' => null));
-      exit;
+      retur(false)
     }
     $this->data['name'] = ValidationFunctions::remove_special_caracters($this->data['name']);
     $validate_email = ValidationFunctions::validate_email($this->data['email']);
@@ -85,8 +84,7 @@ class UserController
     require('../slim-api/src/Models/Model.php');
     //validation
     if(!isset($this->data['name'])){
-      echo json_encode($response = array('description'=>'Name is null !','response' => false));
-      exit;
+      return(false);
     }
     $this->data['name'] = ValidationFunctions::remove_special_caracters($this->data['name']);
     $validate_email = ValidationFunctions::validate_email($this->data['email']);

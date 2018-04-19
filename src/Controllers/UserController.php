@@ -16,16 +16,16 @@ class UserController
   }
 
   function getAll (){
-    require("../slim-app/src/validation_functions.php");
-    require('../slim-app/src/Models/Model.php');
+    require("../slim-api/src/validation_functions.php");
+    require('../slim-api/src/Models/Model.php');
     $mdl = new Model($this->model,$this->data,$this->pdo,'userGetAll');
     $res_query = $mdl->openModel();
     return($res_query);
   }
 
   function getOne(){
-    require("../slim-app/src/validation_functions.php");
-    require('../slim-app/src/Models/Model.php');
+    require("../slim-api/src/validation_functions.php");
+    require('../slim-api/src/Models/Model.php');
     //validation
     if (!isset($this->data['id'])) {
       return(false);
@@ -36,8 +36,8 @@ class UserController
     return($res_query);
   }
   function delete(){
-    require("../slim-app/src/validation_functions.php");
-    require('../slim-app/src/Models/Model.php');
+    require("../slim-api/src/validation_functions.php");
+    require('../slim-api/src/Models/Model.php');
     if (!isset($this->data['id'])) {
       return(false);
     }
@@ -47,8 +47,8 @@ class UserController
   }
 
   function create(){
-    require("../slim-app/src/validation_functions.php");
-    require('../slim-app/src/Models/Model.php');
+    require("../slim-api/src/validation_functions.php");
+    require('../slim-api/src/Models/Model.php');
     // validation
     if(!isset($this->data['name'])){
       echo json_encode($response = array('success' => 'false','description'=>'Name is null !','response' => null));
@@ -81,8 +81,8 @@ class UserController
   }
 
   function update(){
-    require("../slim-app/src/validation_functions.php");
-    require('../slim-app/src/Models/Model.php');
+    require("../slim-api/src/validation_functions.php");
+    require('../slim-api/src/Models/Model.php');
     //validation
     if(!isset($this->data['name'])){
       echo json_encode($response = array('description'=>'Name is null !','response' => false));

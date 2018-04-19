@@ -6,6 +6,7 @@ use Slim\Http\Response;
 
 //user
 $app->get('/api/user', function (Request $request, Response $response, array $args) {
+    
     $mapper = $this->db;
     require_once('Controllers/Controller.php');
     $ctr = new Controller('User', null, $mapper,'getAll');
@@ -158,6 +159,40 @@ $app->get('/api/type', function (Request $request, Response $response, array $ar
       $this->logger->info("Get-Type: All types");
     }
     $resp = array('response' => $res_controller,'description'=>'All types were request !');
+      //echo (json_encode($resp));
+      return(json_encode($resp));
+});
+
+//login
+$app->post('/api/login', function (Request $req,  Response $res, $args = []) {
+    $mapper = $this->db;
+    $data = $req->getParams();
+    require_once('Controllers/Controller.php');
+    $ctr = new Controller('Login', $data, $mapper, 'sign_in');
+    $res_controller = $ctr->openController();
+    if ($res_controller)
+    {
+      $this->logger->info("Sign-in: sign-in:true Email:".$data['email']);
+    }else{
+      $this->logger->info("Sign-in: sign-in:false Email:".$data['email']);
+    }
+    print_r($_SESSION);
+    exit;
+    $resp = array('response' => $res_controller,'description'=>'Sign-in with success !' );
+    return(json_encode($resp));
+});
+
+$app->get('/api/login/{logout}', function (Request $request, Response $response, array $args) {
+    $mapper = $this->db;
+    $data = $args;
+    require_once('Controllers/Controller.php');
+    $ctr = new Controller('Login', $data, $mapper,'logout');
+    $res_controller = $ctr->openController();
+    if ($res_controller)
+    {
+      $this->logger->info("Logout: sign-in: false");
+    }
+    $resp = array('response' => $res_controller,'description'=>'Logout success !');
       //echo (json_encode($resp));
       return(json_encode($resp));
 });

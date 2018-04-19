@@ -17,7 +17,7 @@ $container['logger'] = function ($c) {
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
 };
-
+//db
 $container['db'] = function ($c) {
     $db = $c['settings']['db'];
     $pdo = new PDO('mysql:host=' . $db['host'] . ';dbname=' . $db['dbname'],
@@ -25,4 +25,13 @@ $container['db'] = function ($c) {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
+};
+//login
+$container['validate_login'] = function ($c){
+  if ($_SESSION['user_logged'] == true) {
+    if ($_SESSION['user_id'] != null && $_SESSION['user_name'] != null && $_SESSION['user_email'] != null) {
+      return(true);
+    }
+  }
+  return(false);
 };

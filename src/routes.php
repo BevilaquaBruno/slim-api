@@ -6,7 +6,10 @@ use Slim\Http\Response;
 
 //user
 $app->get('/api/user', function (Request $request, Response $response, array $args) {
-
+    if ($this->validate_login == false) {
+      $resp = array('response' => false,'description'=>'u have not permission to do this !');
+      return(json_encode($resp));
+    }
     $mapper = $this->db;
     require_once('Controllers/Controller.php');
     $ctr = new Controller('User', null, $mapper,'getAll');
@@ -21,6 +24,10 @@ $app->get('/api/user', function (Request $request, Response $response, array $ar
 });
 
 $app->get('/api/user/{id}', function (Request $request, Response $response, array $args) {
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
   $mapper = $this->db;
   $data = $args;
   require_once('Controllers/Controller.php');
@@ -36,6 +43,10 @@ $app->get('/api/user/{id}', function (Request $request, Response $response, arra
 });
 
 $app->put('/api/user', function (Request $req,  Response $res, $args = []) {
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
   $mapper = $this->db;
   $data = $req->getParams();
   require_once('Controllers/Controller.php');
@@ -52,6 +63,10 @@ $app->put('/api/user', function (Request $req,  Response $res, $args = []) {
 
 $app->delete('/api/user/{id}', function (Request $req,  Response $res, $args = []) {
   //mapping db
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
   $mapper = $this->db;
   $data = $args;
   //logger the post-user
@@ -70,6 +85,10 @@ $app->delete('/api/user/{id}', function (Request $req,  Response $res, $args = [
 //example post
 $app->post('/api/user', function (Request $req,  Response $res, $args = []) {
   //mapping db
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
   $mapper = $this->db;
   // data
   $data = $req->getParams();
@@ -89,6 +108,10 @@ $app->post('/api/user', function (Request $req,  Response $res, $args = []) {
 
 //type
 $app->post('/api/type', function (Request $req,  Response $res, $args = []) {
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
     $mapper = $this->db;
     $data = $req->getParams();
     require_once('Controllers/Controller.php');
@@ -104,6 +127,10 @@ $app->post('/api/type', function (Request $req,  Response $res, $args = []) {
 
 $app->delete('/api/type/{id}', function (Request $req,  Response $res, $args = []) {
   //mapping db
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
   $mapper = $this->db;
   $data = $args;
   //logger the post-user
@@ -120,6 +147,10 @@ $app->delete('/api/type/{id}', function (Request $req,  Response $res, $args = [
 });
 
 $app->put('/api/type', function (Request $req,  Response $res, $args = []) {
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
   $mapper = $this->db;
   $data = $req->getParams();
   require_once('Controllers/Controller.php');
@@ -135,6 +166,10 @@ $app->put('/api/type', function (Request $req,  Response $res, $args = []) {
 });
 
 $app->get('/api/type/{id}', function (Request $request, Response $response, array $args) {
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
   $mapper = $this->db;
   $data = $args;
   require_once('Controllers/Controller.php');
@@ -150,6 +185,10 @@ $app->get('/api/type/{id}', function (Request $request, Response $response, arra
 });
 
 $app->get('/api/type', function (Request $request, Response $response, array $args) {
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
     $mapper = $this->db;
     require_once('Controllers/Controller.php');
     $ctr = new Controller('Type', null, $mapper,'getAll');
@@ -165,6 +204,10 @@ $app->get('/api/type', function (Request $request, Response $response, array $ar
 
 //login
 $app->post('/api/login', function (Request $req,  Response $res, $args = []) {
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
     $mapper = $this->db;
     $data = $req->getParams();
     require_once('Controllers/Controller.php');
@@ -183,6 +226,10 @@ $app->post('/api/login', function (Request $req,  Response $res, $args = []) {
 });
 
 $app->get('/api/login/{logout}', function (Request $request, Response $response, array $args) {
+  if ($this->validate_login == false) {
+    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    return(json_encode($resp));
+  }
     $mapper = $this->db;
     $data = $args;
     require_once('Controllers/Controller.php');

@@ -6,7 +6,7 @@ use Slim\Http\Response;
 
 //user
 $app->get('/api/user', function (Request $request, Response $response, array $args) {
-    
+
     $mapper = $this->db;
     require_once('Controllers/Controller.php');
     $ctr = new Controller('User', null, $mapper,'getAll');
@@ -176,7 +176,7 @@ $app->post('/api/login', function (Request $req,  Response $res, $args = []) {
     }else{
       $this->logger->info("Sign-in: sign-in:false Email:".$data['email']);
     }
-    print_r($_SESSION);
+
     exit;
     $resp = array('response' => $res_controller,'description'=>'Sign-in with success !' );
     return(json_encode($resp));

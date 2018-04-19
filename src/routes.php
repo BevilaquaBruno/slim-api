@@ -16,10 +16,13 @@ $app->get('/[{name}]', function (Request $request, Response $response, array $ar
 
 $app->get('/api/user', function (Request $request, Response $response, array $args) {
     $mapper = $this->db;
-    $this->logger->info("Get-User: All users");
+
     require_once('Models/Model.php');
     $mdl = new Model('User', null, $mapper,'userGetAll');
     $res_query = $mdl->openModel();
+    if ($res_query) {
+      $this->logger->info("Get-User: All users");
+    }
     $resp = array('response' => $res_query,'description'=>'All users were request !');
       echo (json_encode($resp));
 });

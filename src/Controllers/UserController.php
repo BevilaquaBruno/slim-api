@@ -73,6 +73,7 @@ class UserController
     }else{
       $this->data['active'] = true;
     }
+    $this->data['password'] = md5($this->data['password']);
     //end validation
     $mdl = new Model($this->model,$this->data,$this->pdo,'userCreate');
     $res_query = $mdl->openModel();

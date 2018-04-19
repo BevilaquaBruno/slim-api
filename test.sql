@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 19-Abr-2018 às 20:19
+-- Generation Time: 19-Abr-2018 às 21:08
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -38,19 +38,21 @@ CREATE TABLE `type` (
 --
 
 INSERT INTO `type` (`id`, `description`) VALUES
-(1, 'type 1'),
-(2, 'type 2'),
-(3, 'type 3'),
-(4, 'type 4'),
-(5, 'type 5'),
-(6, 'type 6'),
-(7, 'type 7'),
-(8, 'type 8'),
-(9, 'type 9'),
-(10, 'type 10'),
-(11, 'type 11'),
-(12, 'type 12'),
-(13, 'type 13');
+(1 , 'Type 1'),
+(2 , 'Type 2'),
+(3 , 'Type 3'),
+(4 , 'Type 4'),
+(5 , 'Type 5'),
+(6 , 'Type 6'),
+(7 , 'Type 7'),
+(8 , 'Type 8'),
+(9 , 'Type 9'),
+(10, 'Type 10'),
+(11, 'Type 11'),
+(12, 'Type 12'),
+(13, 'Type 13'),
+(14, 'Type 14'),
+(15, 'Type 15');
 
 -- --------------------------------------------------------
 
@@ -63,23 +65,22 @@ CREATE TABLE `user` (
   `name` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
-  `active` tinyint(1) NOT NULL DEFAULT '1'
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `user`
 --
-
-INSERT INTO `user` (`id`, `name`, `email`, `admin`, `active`) VALUES
-(1, 'Clark Kent', 'iam@superman.com', 1, 1),
-(2, 'Bruce Wayne', 'iam@batman.com', 0, 1),
-(3, 'Diana Prince', 'iam@wonderwoman.com', 1, 1),
-(4, 'Barry Allen', 'iam@thefastestmanalive.com', 0, 1),
-(5, 'Jay Garrick', 'iam@therealflash.com', 1, 1),
-(6, 'Wally West', 'iam@thefakeflash.com', 0, 1),
-(7, 'Bart Allen', 'iam@thesimpsonsflash', 1, 1),
-(8, 'Tony Stark', 'iam@ironman.com', 1, 1);
-
+INSERT INTO `user` (`id`, `name`, `email`, `admin`, `active`,`password`) VALUES
+(1, 'Clark Kent', 'iam@superman.com', 1, 1, '202cb962ac59075b964b'),
+(2, 'Bruce Wayne', 'iam@batman.com', 0, 1, '202cb962ac59075b964b'),
+(3, 'Diana Prince', 'iam@wonderwoman.com', 1, 1, '202cb962ac59075b964b'),
+(4, 'Barry Allen', 'iam@thefastestmanalive.com', 0, 1, '202cb962ac59075b964b'),
+(5, 'Jay Garrick', 'iam@therealflash.com', 1, 1, '202cb962ac59075b964b'),
+(6, 'Wally West', 'iam@thefakeflash.com', 0, 1, '202cb962ac59075b964b'),
+(7, 'Bart Allen', 'iam@thesimpsonsflash', 1, 1, '202cb962ac59075b964b'),
+(8, 'Tony Stark', 'iam@ironman.com', 1, 1, '202cb962ac59075b964b');
 --
 -- Indexes for dumped tables
 --
@@ -104,7 +105,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `type`
 --
 ALTER TABLE `type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`

@@ -48,13 +48,14 @@ class UserModel
       try {
         $this->pdo->beginTransaction();
         $sql = "INSERT INTO user
-          (name,email, admin, active)
-          VALUES (:name,:email,:admin,:active)";
+          (name,email, admin, active, password)
+          VALUES (:name,:email,:admin,:active, :password)";
             $ins = $this->pdo->prepare($sql);
             $ins->bindParam(':name',$this->data['name']);
             $ins->bindParam(':email',$this->data['email']);
             $ins->bindParam(':admin',$this->data['admin']);
             $ins->bindParam(':active',$this->data['active']);
+            $ins->bindParam(':password',$this->data['password']);
           $obj = $ins->execute();
           $this->pdo->commit();
           return ($obj = true);

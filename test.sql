@@ -73,14 +73,14 @@ CREATE TABLE `user` (
 -- Extraindo dados da tabela `user`
 --
 INSERT INTO `user` (`id`, `name`, `email`, `admin`, `active`,`password`) VALUES
-(1, 'Clark Kent', 'iam@superman.com', 1, 1, '202cb962ac59075b964b'),
-(2, 'Bruce Wayne', 'iam@batman.com', 0, 1, '202cb962ac59075b964b'),
-(3, 'Diana Prince', 'iam@wonderwoman.com', 1, 1, '202cb962ac59075b964b'),
-(4, 'Barry Allen', 'iam@thefastestmanalive.com', 0, 1, '202cb962ac59075b964b'),
-(5, 'Jay Garrick', 'iam@therealflash.com', 1, 1, '202cb962ac59075b964b'),
-(6, 'Wally West', 'iam@thefakeflash.com', 0, 1, '202cb962ac59075b964b'),
-(7, 'Bart Allen', 'iam@thesimpsonsflash', 1, 1, '202cb962ac59075b964b'),
-(8, 'Tony Stark', 'iam@ironman.com', 1, 1, '202cb962ac59075b964b');
+(1, 'Clark Kent', 'iam@superman.com', 1, 1, '202cb962ac59075b964b07152d234b70'),
+(2, 'Bruce Wayne', 'iam@batman.com', 0, 1, '202cb962ac59075b964b07152d234b70'),
+(3, 'Diana Prince', 'iam@wonderwoman.com', 1, 1, '202cb962ac59075b964b07152d234b70'),
+(4, 'Barry Allen', 'iam@thefastestmanalive.com', 0, 1, '202cb962ac59075b964b07152d234b70'),
+(5, 'Jay Garrick', 'iam@therealflash.com', 1, 1, '202cb962ac59075b964b07152d234b70'),
+(6, 'Wally West', 'iam@thefakeflash.com', 0, 1, '202cb962ac59075b964b07152d234b70'),
+(7, 'Bart Allen', 'iam@thesimpsonsflash', 1, 1, '202cb962ac59075b964b07152d234b70'),
+(8, 'Tony Stark', 'iam@ironman.com', 1, 1, '202cb962ac59075b964b07152d234b70');
 --
 -- Indexes for dumped tables
 --

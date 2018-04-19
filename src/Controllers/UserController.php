@@ -51,7 +51,7 @@ class UserController
     require('../slim-api/src/Models/Model.php');
     // validation
     if(!isset($this->data['name'])){
-      retur(false)
+      return(false);
     }
     $this->data['name'] = ValidationFunctions::remove_special_caracters($this->data['name']);
     $validate_email = ValidationFunctions::validate_email($this->data['email']);

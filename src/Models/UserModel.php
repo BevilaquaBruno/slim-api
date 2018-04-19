@@ -12,7 +12,7 @@ class User
     return ($obj->execute()) ? $obj->fetchall(PDO::FETCH_ASSOC) : false;
   }
 
-  public function deleteUser($pdo, $data){
+  public function userDelete($pdo, $data){
     try {
       $pdo->beginTransaction();
       $sql = "DELETE FROM user WHERE id = :id";
@@ -35,7 +35,7 @@ class User
     return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
   }
 
-  public function userRegister($pdo, $data)
+  public function userCreate($pdo, $data)
   {
       try {
         $pdo->beginTransaction();

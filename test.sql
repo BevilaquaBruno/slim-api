@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Abr-2018 às 22:48
+-- Generation Time: 19-Abr-2018 às 20:19
 -- Versão do servidor: 10.1.30-MariaDB
 -- PHP Version: 7.1.14
 
@@ -25,6 +25,36 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `type`
+--
+
+CREATE TABLE `type` (
+  `id` int(11) NOT NULL,
+  `description` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `type`
+--
+
+INSERT INTO `type` (`id`, `description`) VALUES
+(1, 'type 1'),
+(2, 'type 2'),
+(3, 'type 3'),
+(4, 'type 4'),
+(5, 'type 5'),
+(6, 'type 6'),
+(7, 'type 7'),
+(8, 'type 8'),
+(9, 'type 9'),
+(10, 'type 10'),
+(11, 'type 11'),
+(12, 'type 12'),
+(13, 'type 13');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `user`
 --
 
@@ -41,22 +71,24 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `admin`, `active`) VALUES
-(1, 'alterado bruno', 'email@alterado.com', 0, 0),
-(4, 'UserName', NULL, 1, 1),
-(5, 'UserName', NULL, 1, 1),
-(6, 'UserName', NULL, 1, 1),
-(7, 'UserName', NULL, 1, 1),
-(8, 'UserName', NULL, 1, 1),
-(9, 'UserName', NULL, 1, 1),
-(10, 'UserName', NULL, 1, 1),
-(12, 'Bruno', NULL, 1, 1),
-(13, 'Bruno', 'user1dsad23@email.com', 1, 1),
-(14, 'UserName', 'user@email.com', 1, 1),
-(15, 'UserName', 'user@email.com', 1, 1);
+(1, 'Clark Kent', 'iam@superman.com', 1, 1),
+(2, 'Bruce Wayne', 'iam@batman.com', 0, 1),
+(3, 'Diana Prince', 'iam@wonderwoman.com', 1, 1),
+(4, 'Barry Allen', 'iam@thefastestmanalive.com', 0, 1),
+(5, 'Jay Garrick', 'iam@therealflash.com', 1, 1),
+(6, 'Wally West', 'iam@thefakeflash.com', 0, 1),
+(7, 'Bart Allen', 'iam@thesimpsonsflash', 1, 1),
+(8, 'Tony Stark', 'iam@ironman.com', 1, 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `type`
+--
+ALTER TABLE `type`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -69,10 +101,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `type`
+--
+ALTER TABLE `type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

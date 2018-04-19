@@ -66,7 +66,7 @@ CREATE TABLE `user` (
   `email` varchar(50) DEFAULT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0',
   `active` tinyint(1) NOT NULL DEFAULT '1',
-  `password` varchar(20) NOT NULL
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

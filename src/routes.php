@@ -4,14 +4,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 // Routes
 
-//example slim
-$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
-});
-
 $app->get('/api/user', function (Request $request, Response $response, array $args) {
     $mapper = $this->db;
     require_once('Controllers/Controller.php');
@@ -22,8 +14,8 @@ $app->get('/api/user', function (Request $request, Response $response, array $ar
       $this->logger->info("Get-User: All users");
     }
     $resp = array('response' => $res_controller,'description'=>'All users were request !');
-      echo (json_encode($resp));
-      // return(json_encode($resp));
+      //echo (json_encode($resp));
+      return(json_encode($resp);
 });
 
 $app->get('/api/user/{id}', function (Request $request, Response $response, array $args) {
@@ -37,7 +29,8 @@ $app->get('/api/user/{id}', function (Request $request, Response $response, arra
     $this->logger->info("Get-User: id: ".$data['id']);
   }
   $resp = array('response' => $res_controller,'description'=>'A user were request !');
-      echo (json_encode($resp));
+      //echo (json_encode($resp));
+      return(json_encode($resp);
 });
 
 $app->put('/api/user', function (Request $req,  Response $res, $args = []) {
@@ -51,7 +44,8 @@ $app->put('/api/user', function (Request $req,  Response $res, $args = []) {
      $this->logger->info("Update-User: id:".$data['id']." Name:".$data['name']." Email:".$data['email']." Admin:".((isset($data['admin']))?$data['admin']:0)."  Active:".((isset($data['admin']))?$data['admin']:0));
   }
   $resp = array('response' => $res_controller,'description'=>'User Update !');
-    echo (json_encode($resp));
+    //echo (json_encode($resp));
+    return(json_encode($resp);
 });
 $app->delete('/api/user/{id}', function (Request $req,  Response $res, $args = []) {
   //mapping db
@@ -66,8 +60,8 @@ $app->delete('/api/user/{id}', function (Request $req,  Response $res, $args = [
     $this->logger->info("Delete-User: id:".$data['id']);
   }
   $resp = array('response' => $res_controller,'description'=>'User delete !');
-    echo (json_encode($resp));
-    //return(json_encode($response));
+    //echo (json_encode($resp));
+    return(json_encode($resp);
 });
 
 //example post
@@ -85,6 +79,6 @@ $app->post('/api/user', function (Request $req,  Response $res, $args = []) {
      $this->logger->info("Post-User: Name:".$data['name']." Email:".$data['email']." Admin:".((isset($data['admin']))?$data['admin']:0)."  Active:".((isset($data['admin']))?$data['admin']:0));
   }
   $resp = array('response' => $res_controller,'description'=>'User register !');
-    echo (json_encode($resp));
-    //return(json_encode($response));
+    //echo (json_encode($resp));
+    return(json_encode($resp);
 });

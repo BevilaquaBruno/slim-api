@@ -21,7 +21,8 @@ class Model
   public function openModel(){
     require_once($this->model.'Model.php');
     $var = $this->func;
-    $model_instance = new $this->model;
+    $var_instance = $this->model.'Model';
+    $model_instance = new $var_instance;
     $som_return = $model_instance->$var($this->pdo,$this->data);
     return($som_return);
   }

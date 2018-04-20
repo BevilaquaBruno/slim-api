@@ -204,10 +204,9 @@ $app->get('/api/type', function (Request $request, Response $response, array $ar
 
 //login
 $app->post('/api/login', function (Request $req,  Response $res, $args = []) {
-  if ($this->validate_login == false) {
-    $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp));
-  }
+    if ($this->validate_login == true) {
+      return($res->withJson(array('response' => false,'description'=>'U are already logged'),401));
+    }
     $mapper = $this->db;
     $data = $req->getParams();
     require_once('Controllers/Controller.php');
@@ -216,13 +215,35 @@ $app->post('/api/login', function (Request $req,  Response $res, $args = []) {
     if ($res_controller)
     {
       $this->logger->info("Sign-in: sign-in:true Email:".$data['email']);
+      return $res->withRedirect('/api/login/settoken/true', 301);
     }else{
       $this->logger->info("Sign-in: sign-in:false Email:".$data['email']);
+      return($res->withJson(array('response' => $res_controller,'description'=>'Incorrect user or password' ),401));
+      return($resp);
     }
+});
 
-    exit;
-    $resp = array('response' => $res_controller,'description'=>'Sign-in with success !' );
-    return(json_encode($resp));
+$app->get('/api/login/settoken/{opt}', function (Request $req,  Response $res, $args = []) {
+    $mapper = $this->db;
+    $data = $args;
+    if ($data['opt'] == true) {
+      $token = md5(uniqid(rand(), true));
+    }else{
+      $token = null;
+    }
+    $data['token'] = $token;
+    $data['user_id'] = $_SESSION['user_id'];
+    require_once('Controllers/Controller.php');
+    $ctr = new Controller('Login',$data, $mapper, 'set_token');
+    $res_controller = $ctr->openController();
+    if ($res_controller)
+    {
+      $this->logger->info("Set-Token: true");
+      return($res->withJson(array('response' => true,'description'=>'Sign-in with success !' ),200));
+    }else{
+      $this->logger->info("Set-Token: false");
+      return($res->withJson(array('response' => false,'description'=>'Error on define token !' ),500));
+    }
 });
 
 $app->get('/api/login/{logout}', function (Request $request, Response $response, array $args) {
@@ -238,8 +259,7 @@ $app->get('/api/login/{logout}', function (Request $request, Response $response,
     if ($res_controller)
     {
       $this->logger->info("Logout: sign-in: false");
+      return $res->withRedirect('/api/login/settoken/false', 301);
     }
-    $resp = array('response' => $res_controller,'description'=>'Logout success !');
-      //echo (json_encode($resp));
-      return(json_encode($resp));
+      return($res->withJson(array('description' => , );,200));
 });

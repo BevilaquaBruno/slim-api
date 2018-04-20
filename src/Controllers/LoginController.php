@@ -56,6 +56,33 @@ class LoginController
       return(true);
     }
   }
+
+  function set_token(){
+    require("../slim-api/src/validation_functions.php");
+    require('../slim-api/src/Models/Model.php');
+
+    if (!isset($this->data['token']) || $this->data['token'] == '' || $this->data['token'] == 0 || $this->data['user_id'] == null || !isset($this->data['user_id'])) {
+      return(false);
+    }
+    $mdl = new Model($this->model,$this->data,$this->pdo,'login_set_token');
+    $res_query = $mdl->openModel();
+    if ($res_query) {
+      $_SESSION['user_token'] = $this->data['token'];
+    }
+    return($res_query);
+  }
+
+  function get_token(){
+    require("../slim-api/src/validation_functions.php");
+    require('../slim-api/src/Models/Model.php');
+
+    if (!isset($this->data['user_id']) || $this->data['user_id'] == null) {
+      return(false);
+    }
+    $mdl = new Model($this->model,$this->data,$this->pdo,'login_get_token');
+    $res_query = $mdl->openModel();
+    return($res_query);
+  }
 }
 
 

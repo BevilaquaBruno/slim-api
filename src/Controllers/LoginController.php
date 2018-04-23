@@ -31,6 +31,9 @@ class LoginController
     $mdl = new Model($this->model,$this->data,$this->pdo,'login_sign_in');
     $res_query = $mdl->openModel();
     if ($res_query){
+      if (!isset($_SESSION['user_logged'])) {
+        session_start();
+      }
       $_SESSION['user_id'] = $res_query['id'];
       $_SESSION['user_logged'] = true;
       $_SESSION['user_name'] = $res_query['name'];
@@ -47,9 +50,8 @@ class LoginController
       return(false);
     }
     if ($this->data['logout'] != true) {
-      return('false');
+      return(false);
     }else{
-      $_SESSION['user_id'] = null;
       $_SESSION['user_logged'] = false;
       $_SESSION['user_name'] = null;
       $_SESSION['user_email'] = null;
@@ -60,14 +62,17 @@ class LoginController
   function set_token(){
     require("../slim-api/src/validation_functions.php");
     require('../slim-api/src/Models/Model.php');
-
-    if (!isset($this->data['token']) || $this->data['token'] == '' || $this->data['token'] == 0 || $this->data['user_id'] == null || !isset($this->data['user_id'])) {
+    if (!isset($this->data['token']) || $this->data['user_id'] == null || !isset($this->data['user_id'])) {
+      echo "teste";
+      exit;
       return(false);
     }
     $mdl = new Model($this->model,$this->data,$this->pdo,'login_set_token');
     $res_query = $mdl->openModel();
     if ($res_query) {
-      $_SESSION['user_token'] = $this->data['token'];
+      if (isset($_SESSION['user_token'])) {
+        $_SESSION['user_token'] = $this->data['token'];
+      }
     }
     return($res_query);
   }

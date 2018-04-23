@@ -28,10 +28,13 @@ $container['db'] = function ($c) {
 };
 //login
 $container['validate_login'] = function ($c){
-  if ($_SESSION['user_logged'] == true) {
-    if ($_SESSION['user_id'] != null && $_SESSION['user_name'] != null && $_SESSION['user_email'] != null) {
+  if (isset($_SESSION['user_logged'])) {
+    if ($_SESSION['user_logged'] != null) {
       return(true);
+    }else{
+      return(false);
     }
+  }else{
+    return(false);
   }
-  return(false);
 };

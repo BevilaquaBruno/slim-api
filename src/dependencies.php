@@ -28,13 +28,24 @@ $container['db'] = function ($c) {
 };
 //login
 $container['validate_login'] = function ($c){
-  if (isset($_SESSION['user_logged'])) {
-    if ($_SESSION['user_logged'] != null) {
-      return(true);
-    }else{
-      return(false);
-    }
-  }else{
+  $db = $c['settings']['db'];
+  $pdo = new PDO('mysql:host=' . $db['host'] . ';dbname=' . $db['dbname'],
+      $db['user'], $db['pass']);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+  $mapper = $pdo;
+  $data['user_id'] = $_SESSION['user_id'];
+  require_once('Controllers/Controller.php');
+  $ctr = new Controller('Login',$data, $mapper, 'get_token');
+  $res_controller = $ctr->openController();
+
+
+  if ($res_controller['token'] == null) {
     return(false);
   }
+  if ($res_controller['token'] == $_GET['api_token'] &&
+      $res_controller['token'] == $_SESSION['user_token']) {
+    return(true);
+  }
+  return(false);
 };

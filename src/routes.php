@@ -205,9 +205,9 @@ $app->get('/api/type', function (Request $request, Response $response, array $ar
 
 //login
 $app->post('/api/login', function (Request $req,  Response $res, $args = []) {
-    if ($this->validate_login == true) {
-      return($res->withJson(array('response' => false,'description'=>'U are already logged'),401));
-    }
+    // if ($this->validate_login == true) {
+    //   return($res->withJson(array('response' => false,'description'=>'U are already logged'),401));
+    // }
     $mapper = $this->db;
     $data = $req->getParams();
     require_once('Controllers/Controller.php');
@@ -217,6 +217,9 @@ $app->post('/api/login', function (Request $req,  Response $res, $args = []) {
     {
       $this->logger->info("Sign-in: sign-in:true Email:".$data['email']);
       return $res->withRedirect('/api/login/settoken/true', 301);
+    }else if ($_SESSION['user_logged'] == true) {
+      $this->logger->info("Sign-in: sign-in:false Email:".$data['email']);
+      return($res->withJson(array('response' => $res_controller,'description'=>'U are already logged' ),401));
     }else{
       $this->logger->info("Sign-in: sign-in:false Email:".$data['email']);
       return($res->withJson(array('response' => $res_controller,'description'=>'Incorrect user or password' ),401));
@@ -248,10 +251,10 @@ $app->get('/api/login/settoken/{opt}', function (Request $req,  Response $res, $
 });
 
 $app->get('/api/login/{logout}', function (Request $request, Response $res, array $args) {
-  if ($this->validate_login == false) {
-    $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return($res->withJson($resp,401));
-  }
+  // if ($this->validate_login == false) {
+  //   $resp = array('response' => false,'description'=>'u have not permission to do this !');
+  //   return($res->withJson($resp,401));
+  // }
     $mapper = $this->db;
     $data = $args;
     require_once('Controllers/Controller.php');

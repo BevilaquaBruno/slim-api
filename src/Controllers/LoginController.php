@@ -18,8 +18,8 @@ class LoginController
 
   function sign_in()
   {
-    require("../slim-api/src/validation_functions.php");
-    require('../slim-api/src/Models/Model.php');
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
     if (isset($_SESSION['user_logged']) && $_SESSION['user_logged'] == true ) {
       return(false);
     }
@@ -44,8 +44,8 @@ class LoginController
 
   function logout()
   {
-    require("../slim-api/src/validation_functions.php");
-    require('../slim-api/src/Models/Model.php');
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
     if ((isset($_SESSION['user_logged']) && $_SESSION['user_logged'] == false) || !isset($_SESSION['user_logged'])) {
       return(false);
     }
@@ -60,26 +60,22 @@ class LoginController
   }
 
   function set_token(){
-    require("../slim-api/src/validation_functions.php");
-    require('../slim-api/src/Models/Model.php');
-    if (!isset($this->data['token']) || $this->data['user_id'] == null || !isset($this->data['user_id'])) {
-      echo "teste";
-      exit;
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
+    if ($this->data['user_id'] == null || !isset($this->data['user_id'])) {
       return(false);
     }
     $mdl = new Model($this->model,$this->data,$this->pdo,'login_set_token');
     $res_query = $mdl->openModel();
     if ($res_query) {
-      if (isset($_SESSION['user_token'])) {
-        $_SESSION['user_token'] = $this->data['token'];
-      }
+      $_SESSION['user_token'] = $this->data['token'];
     }
     return($res_query);
   }
 
   function get_token(){
-    require("../slim-api/src/validation_functions.php");
-    require('../slim-api/src/Models/Model.php');
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
 
     if (!isset($this->data['user_id']) || $this->data['user_id'] == null) {
       return(false);

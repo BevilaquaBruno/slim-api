@@ -18,8 +18,8 @@ class TypeController
 
   function create()
   {
-    require("../slim-api/src/validation_functions.php");
-    require('../slim-api/src/Models/Model.php');
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
 
     if (!isset($this->data['description']) || $this->data['description'] == '')
     {
@@ -33,8 +33,8 @@ class TypeController
 
   function delete()
   {
-    require("../slim-api/src/validation_functions.php");
-    require('../slim-api/src/Models/Model.php');
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
     if (!isset($this->data['id'])) {
       return(false);
     }
@@ -45,8 +45,8 @@ class TypeController
 
   function update()
   {
-    require("../slim-api/src/validation_functions.php");
-    require('../slim-api/src/Models/Model.php');
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
     //validation
     if(!isset($this->data['description']) || !isset($this->data['id']) || $this->data['id'] == 0 || $this->data['description'] == ''){
       return(false);
@@ -58,8 +58,8 @@ class TypeController
   }
 
   function getOne(){
-    require("../slim-api/src/validation_functions.php");
-    require('../slim-api/src/Models/Model.php');
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
     //validation
     if (!isset($this->data['id'])) {
       return(false);
@@ -71,8 +71,8 @@ class TypeController
   }
 
   function getAll (){
-    require("../slim-api/src/validation_functions.php");
-    require('../slim-api/src/Models/Model.php');
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
     $mdl = new Model($this->model,$this->data,$this->pdo,'typeGetAll');
     $res_query = $mdl->openModel();
     return($res_query);

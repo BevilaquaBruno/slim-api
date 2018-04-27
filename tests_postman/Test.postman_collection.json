@@ -1,0 +1,452 @@
+{
+	"info": {
+		"_postman_id": "a0f91532-d50a-4f32-8c0a-bc82f99b62c3",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"description": "",
+			"item": [
+				{
+					"name": "Post User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "UserNames",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "user@email.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/user?api_token=user_token",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "api_token",
+									"value": "user_token"
+								}
+							]
+						},
+						"description": "Example Post for User"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/api/user/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"5"
+							]
+						},
+						"description": "Example delete user"
+					},
+					"response": []
+				},
+				{
+					"name": "Put/Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "alterado bruno bevilaqua",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "email@alterado.com",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							]
+						},
+						"description": "user update"
+					},
+					"response": []
+				},
+				{
+					"name": "Get One User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/api/user/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"8"
+							]
+						},
+						"description": "get user one"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "name",
+								"value": "Bruno"
+							},
+							{
+								"key": "email",
+								"value": "email"
+							},
+							{
+								"key": "admin",
+								"value": "1"
+							},
+							{
+								"key": "active",
+								"value": "1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "User 2",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "user2@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							]
+						},
+						"description": "Example Get user all"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Type",
+			"description": "",
+			"item": [
+				{
+					"name": "Post Type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "description",
+									"value": "type 2",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/type",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"type"
+							]
+						},
+						"description": "type example post"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/api/type/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"type",
+								"2"
+							]
+						},
+						"description": "type delete example"
+					},
+					"response": []
+				},
+				{
+					"name": "Put/Update Type",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "type alterado",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/type",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"type"
+							]
+						},
+						"description": "type update example"
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/api/type/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"type",
+								"2"
+							]
+						},
+						"description": "type get one example"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/api/type",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"type"
+							]
+						},
+						"description": "type get all example"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"description": "",
+			"item": [
+				{
+					"name": "Sign-in",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "iam@superman.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						},
+						"description": "login post example"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:8080/api/login/true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login",
+								"true"
+							]
+						},
+						"description": "Logou example"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

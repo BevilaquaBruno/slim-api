@@ -48,3 +48,7 @@ Your Development server has running on [localhost:8080](localhost:8080)
 - [x] Type delete -- Send a delete to Localhost:8080/api/type/{type_id};
 - [x] Show all types -- Send a get to Localhost:8080/api/type;
 - [x] Show one type -- Send a get to Localhost:8080/api/type/{type_id};
+
+> Products
+
+###### I did not even start to develop this.

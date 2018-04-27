@@ -6,12 +6,13 @@ but if you born in another planet, i have to say you should have:
 - Composer
 - Slim framerwork
 
-* Pick this project and in the root of this, run this command line: *
+
+ Pick this project and in the root of this, run this command line:
 ```
 php -S localhost:8080 -t public public/index.php
 ```
 
-* Your Development server has running on [localhost:8080](localhost:8080) *
+Your Development server has running on [localhost:8080](localhost:8080)
 
 > Now you can send some POSTS, GETS, PUTS and DELETES through this url
 

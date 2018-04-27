@@ -12,6 +12,8 @@ but if you born in another planet, i have to say you should have:
 php -S localhost:8080 -t public public/index.php
 ```
 
+if you need help about slim micro framerwork - [Slim Official Website](https://www.slimframework.com/)
+
 Your Development server has running on [localhost:8080](localhost:8080)
 
 > Now you can send some POSTS, GETS, PUTS and DELETES through this url

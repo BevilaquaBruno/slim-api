@@ -168,7 +168,7 @@ $app->put('/api/type', function (Request $req,  Response $res, $args = []) {
 
 $app->get('/api/type/{id}', function (Request $req, Response $res, array $args) {
   if ($this->validate_login == false) {
-    $resp = array('response' => false,'description'=>'u have not permission to do this !');
+    $resp = array('response' => false,'description'=>'you have not permission to do this !');
     return(json_encode($resp));
   }
   $mapper = $this->db;

@@ -5,7 +5,7 @@ use Slim\Http\Response;
 // Routes
 
 //user
-$app->get('/api/user', function (Request $request, Response $response, array $args) {
+$app->get('/api/user', function (Request $req, Response $res, array $args) {
     if ($this->validate_login == false) {
       $resp = array('response' => false,'description'=>'u have not permission to do this !');
       return(json_encode($resp));
@@ -23,7 +23,7 @@ $app->get('/api/user', function (Request $request, Response $response, array $ar
       }
 });
 
-$app->get('/api/user/{id}', function (Request $request, Response $response, array $args) {
+$app->get('/api/user/{id}', function (Request $req, Response $res, array $args) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
     return(json_encode($resp));
@@ -166,7 +166,7 @@ $app->put('/api/type', function (Request $req,  Response $res, $args = []) {
   }
 });
 
-$app->get('/api/type/{id}', function (Request $request, Response $response, array $args) {
+$app->get('/api/type/{id}', function (Request $req, Response $res, array $args) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
     return(json_encode($resp));
@@ -185,7 +185,7 @@ $app->get('/api/type/{id}', function (Request $request, Response $response, arra
   }
 });
 
-$app->get('/api/type', function (Request $request, Response $response, array $args) {
+$app->get('/api/type', function (Request $req, Response $res, array $args) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
     return($res->withJson($resp,200));
@@ -250,7 +250,7 @@ $app->get('/api/login/settoken/{opt}', function (Request $req,  Response $res, $
     }
 });
 
-$app->get('/api/login/{logout}', function (Request $request, Response $res, array $args) {
+$app->get('/api/login/{logout}', function (Request $req, Response $res, array $args) {
   // if ($this->validate_login == false) {
   //   $resp = array('response' => false,'description'=>'u have not permission to do this !');
   //   return($res->withJson($resp,401));

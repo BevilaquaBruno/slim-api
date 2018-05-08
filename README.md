@@ -39,7 +39,7 @@ Your Development server has running on [localhost:8080](localhost:8080)
 - [x] User delete -- Send a delete to Localhost:8080/api/user/{user_id};
 - [x] Show all users -- Send a get to Localhost:8080/api/user;
 - [x] Show one user -- Send a get to Localhost:8080/api/user/{user_id};
-- [ ] Change Password;
+- [x] Change Password;
 - [ ] Change Email;
 
 > Type

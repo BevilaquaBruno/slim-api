@@ -38,8 +38,6 @@ $container['validate_login'] = function ($c){
   require_once('Controllers/Controller.php');
   $ctr = new Controller('Login',$data, $mapper, 'get_token');
   $res_controller = $ctr->openController();
-
-
   if ($res_controller['token'] == null) {
     return(false);
   }

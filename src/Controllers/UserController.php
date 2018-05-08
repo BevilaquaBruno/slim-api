@@ -15,6 +15,18 @@ class UserController
     $this->pdo = $pdo;
   }
 
+  function changePassword(){
+    require_once("../slim-api/src/validation_functions.php");
+    require_once('../slim-api/src/Models/Model.php');
+    if (!isset($this->data['user_id']) || !isset($this->data['old_password']) || !isset($this->data['new_password']) || !isset($this->data['user_email']))) {
+      return(false);
+    }
+    $this->data['user_id'] = md5($this->data['user_id'])
+    $mdl = new Model($this->model,$this->data,$this->pdo,'userChangePassword');
+    $res_query = $mdl->openModel();
+    return($res_query);
+  }
+
   function getAll (){
     require_once("../slim-api/src/validation_functions.php");
     require_once('../slim-api/src/Models/Model.php');

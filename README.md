@@ -1,7 +1,7 @@
 # An API with slim micro framerwork
 ## How to run this:
-> I guess I do not even need to say what you need to make it work.
-but if you born in another planet, i have to say you should have:
+> I guess I do not even need to say what you need to make it work,
+but if you were born in another planet, i have to say you should have:
 - php v5.5 | or latest
 - Composer
 - Slim framerwork
@@ -20,7 +20,6 @@ Your Development server has running on [localhost:8080](localhost:8080)
 
 ## What I have done and what I am too lazy to do: :sleeping:
 
-###### asdasdas
 > Important Files
 
 - [x] Controller -- He call any other controllers;

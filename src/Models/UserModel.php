@@ -19,7 +19,7 @@ class UserModel
       $obj = $this->pdo->prepare($sql);
       $obj->execute(array($this->data['new_password'], $this->data['user_email'], $this->data['old_password']));
       $this->pdo->commit();
-      return($obj = true)
+      return($obj = true);
     } catch (\Exception $e) {
       return($obj = false);
     }

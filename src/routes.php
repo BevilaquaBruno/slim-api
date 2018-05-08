@@ -8,7 +8,7 @@ use Slim\Http\Response;
 $app->get('/api/user', function (Request $req, Response $res, array $args) {
     if ($this->validate_login == false) {
       $resp = array('response' => false,'description'=>'u have not permission to do this !');
-      return(json_encode($resp);
+      return(json_encode($resp));
     }
     $mapper = $this->db;
     require_once('Controllers/Controller.php');
@@ -25,16 +25,16 @@ $app->get('/api/user', function (Request $req, Response $res, array $args) {
 $app->post('/api/user/change/password', function (Request $req, Response $res, array $args){
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
   $mapper = $this->db;
-  $data = $args;
-  required_once('Controllers/Controller.php');
+  $data = $req->getParams();
+  require_once('Controllers/Controller.php');
   $ctr = new Controller('User',$data,$mapper,'changePassword');
   $res_controller = $ctr->openController();
   $resp = array('response' => $res_controller, 'description'=>'password changed');
   if ($res_controller) {
-    $this->logger->info('Change password: id: '.$data['id']);
+    $this->logger->info('Change password: id: '.$data['user_id']);
     return(json_encode($resp));
   }else{
     return(json_encode($resp));
@@ -45,7 +45,7 @@ $app->post('/api/user/change/password', function (Request $req, Response $res, a
 $app->get('/api/user/{id}', function (Request $req, Response $res, array $args) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
   $mapper = $this->db;
   $data = $args;
@@ -64,7 +64,7 @@ $app->get('/api/user/{id}', function (Request $req, Response $res, array $args) 
 $app->put('/api/user', function (Request $req,  Response $res, $args = []) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
   $mapper = $this->db;
   $data = $req->getParams();
@@ -74,8 +74,7 @@ $app->put('/api/user', function (Request $req,  Response $res, $args = []) {
   $resp = array('response' => $res_controller,'description'=>'User Update !');
   if ($res_controller) {
     $this->logger->info("Update-User: id:".$data['id']." Name:".$data['name']." Email:".$data['email']." Admin:".((isset($data['admin']))?$data['admin']:0)."  Active:".((isset($data['admin']))?$data['admin']:0));
-    return($resp)
-  }else{
+    return($resp);  }else{
     return(json_encode($resp));
   }
 });
@@ -84,7 +83,7 @@ $app->delete('/api/user/{id}', function (Request $req,  Response $res, $args = [
   //mapping db
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
   $mapper = $this->db;
   $data = $args;
@@ -106,7 +105,7 @@ $app->post('/api/user', function (Request $req,  Response $res, $args = []) {
   //mapping db
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
   $mapper = $this->db;
   // data
@@ -129,7 +128,7 @@ $app->post('/api/user', function (Request $req,  Response $res, $args = []) {
 $app->post('/api/type', function (Request $req,  Response $res, $args = []) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
     $mapper = $this->db;
     $data = $req->getParams();
@@ -149,7 +148,7 @@ $app->delete('/api/type/{id}', function (Request $req,  Response $res, $args = [
   //mapping db
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
   $mapper = $this->db;
   $data = $args;
@@ -169,7 +168,7 @@ $app->delete('/api/type/{id}', function (Request $req,  Response $res, $args = [
 $app->put('/api/type', function (Request $req,  Response $res, $args = []) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
   $mapper = $this->db;
   $data = $req->getParams();
@@ -188,7 +187,7 @@ $app->put('/api/type', function (Request $req,  Response $res, $args = []) {
 $app->get('/api/type/{id}', function (Request $req, Response $res, array $args) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'you have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
   $mapper = $this->db;
   $data = $args;
@@ -207,7 +206,7 @@ $app->get('/api/type/{id}', function (Request $req, Response $res, array $args) 
 $app->get('/api/type', function (Request $req, Response $res, array $args) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
     $mapper = $this->db;
     require_once('Controllers/Controller.php');
@@ -226,7 +225,7 @@ $app->get('/api/type', function (Request $req, Response $res, array $args) {
 $app->post('/api/login', function (Request $req,  Response $res, $args = []) {
     if ($this->validate_login == true) {
       $resp = array('response' => false,'description'=>'u have not permission to do this !');
-      return(json_encode($resp);
+      return(json_encode($resp));
     }
     $mapper = $this->db;
     $data = $req->getParams();
@@ -240,7 +239,7 @@ $app->post('/api/login', function (Request $req,  Response $res, $args = []) {
     }else if ($_SESSION['user_logged'] == true) {
       $this->logger->info("Sign-in: sign-in:false Email:".$data['email']);
       $resp = array('response' => $res_controller,'description'=>'U are already logged');
-      return(json_encode($resp)));
+      return(json_encode($resp));
     }else{
       $this->logger->info("Sign-in: sign-in:false Email:".$data['email']);
       $resp = array('response' => $res_controller,'description'=>'Incorrect user or password' );
@@ -265,11 +264,11 @@ $app->get('/api/login/settoken/{opt}', function (Request $req,  Response $res, $
     if ($res_controller)
     {
       $this->logger->info("Set-Token: true");
-      $resp = array('response' => true,'description'=>'Token Defined !' )
+      $resp = array('response' => true,'description'=>'Token Defined !' );
       return(json_encode($resp));
     }else{
       $this->logger->info("Set-Token: false");
-      $resp = array('response' => false,'description'=>'Error on define token !' )
+      $resp = array('response' => false,'description'=>'Error on define token !' );
       return($resp);
     }
 });
@@ -277,7 +276,7 @@ $app->get('/api/login/settoken/{opt}', function (Request $req,  Response $res, $
 $app->get('/api/login/{logout}', function (Request $req, Response $res, array $args) {
   if ($this->validate_login == false) {
     $resp = array('response' => false,'description'=>'u have not permission to do this !');
-    return(json_encode($resp);
+    return(json_encode($resp));
   }
     $mapper = $this->db;
     $data = $args;

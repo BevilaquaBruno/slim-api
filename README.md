@@ -54,4 +54,4 @@ Your Development server has running on [localhost:8080](localhost:8080)
 
 ###### I did not even start to develop this.
 
-> Note: You have to put in all the URL the api_token that you gain when sign-in.
+> Note: You have to put in all the URL the api_token that you receive when sign-in.

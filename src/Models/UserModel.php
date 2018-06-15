@@ -12,15 +12,27 @@ class UserModel
     $this->data = $data;
   }
 
-  public function userGetAll()
-  {
+  function userChangePassword(){
+    try {
+      $this->pdo->beginTransaction();
+      $sql = "UPDATE user SET password = ? WHERE email = ? and password = ?";
+      $obj = $this->pdo->prepare($sql);
+      $obj->execute(array($this->data['new_password'], $this->data['user_email'], $this->data['old_password']));
+      $this->pdo->commit();
+      return($obj = true);
+    } catch (\Exception $e) {
+      return($obj = false);
+    }
+  }
+
+  function userGetAll(){
     $this->pdo->beginTransaction();
       $sql = "SELECT * FROM user ";
       $obj = $this->pdo->prepare($sql);
     return ($obj->execute()) ? $obj->fetchall(PDO::FETCH_ASSOC) : false;
   }
 
-  public function userDelete(){
+  function userDelete(){
     try {
       $this->pdo->beginTransaction();
       $sql = "DELETE FROM user WHERE id = :id";
@@ -36,14 +48,14 @@ class UserModel
 
   }
 
-  public function userGetOne (){
+  function userGetOne (){
       $sql = "SELECT * FROM user WHERE id = :id";
       $obj = $this->pdo->prepare($sql);
       $obj->bindParam(':id',$this->data['id']);
     return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
   }
 
-  public function userCreate()
+  function userCreate()
   {
       try {
         $this->pdo->beginTransaction();
@@ -64,7 +76,7 @@ class UserModel
             return $obj = false;
       }
   }
-  public function userUpdate()
+  function userUpdate()
   {
       try {
         $this->pdo->beginTransaction();

@@ -1,4 +1,4 @@
-# An API with slim micro framerwork
+# An API with slim micro framework
 ## How to run this:
 > I guess I do not even need to say what you need to make it work,
 but if you were born in another planet, i have to say you should have:

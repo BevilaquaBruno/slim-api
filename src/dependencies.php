@@ -34,11 +34,13 @@ $container['validate_login'] = function ($c){
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
   $mapper = $pdo;
+  if (!isset($_SESSION['user_id'])) {
+      return(false);
+  }
   $data['user_id'] = $_SESSION['user_id'];
   require_once('Controllers/Controller.php');
   $ctr = new Controller('Login',$data, $mapper, 'get_token');
   $res_controller = $ctr->openController();
-
 
   if ($res_controller['token'] == null) {
     return(false);

@@ -27,7 +27,7 @@ class UserModel
 
   function userGetAll(){
     $this->pdo->beginTransaction();
-      $sql = "SELECT * FROM user ";
+      $sql = "SELECT id, name, email, admin, active FROM user ";
       $obj = $this->pdo->prepare($sql);
     return ($obj->execute()) ? $obj->fetchall(PDO::FETCH_ASSOC) : false;
   }
@@ -49,7 +49,7 @@ class UserModel
   }
 
   function userGetOne (){
-      $sql = "SELECT * FROM user WHERE id = :id";
+      $sql = "SELECT id, name, email, admin, active FROM user WHERE id = :id";
       $obj = $this->pdo->prepare($sql);
       $obj->bindParam(':id',$this->data['id']);
     return ($obj->execute()) ? $obj->fetch(PDO::FETCH_ASSOC) : false;
